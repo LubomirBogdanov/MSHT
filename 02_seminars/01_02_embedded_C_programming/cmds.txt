@@ -1,0 +1,52 @@
+ssh root@192.168.7.2
+pass: no pass
+
+  271  mkdir test
+  272  cd test/
+  273  ls
+  274  touch main.c
+  275  nano main.c
+  276  cat main.c 
+  277  gcc main.c -o main 
+  278  ./main 
+  279  gcc -S main.c -o main.s
+  280  cat main.s 
+  281  gcc -c main.c -o main.o
+  282  cat main.o 
+  283  objdump -S -D main.o
+  284  touch display_msg.h
+  285  touch display_msg.c
+  286  nano display_msg.h 
+  287  nano display_msg.c 
+  288  nano main.c 
+  289  gcc main.c -o main.o
+  290  cat display_msg.h 
+  291  ls
+  292  cat main.c 
+  293  cat display_msg.h 
+  294  cat display_msg.c 
+  295  gcc -c  main.c -o main
+  296  gcc -c  main.c -o main.o
+  297  gcc -c  display_msg.c -o display_msg.o
+  298  objdump -S -D main.o 
+  299  objdump -S -D display_msg.o 
+  300  gcc main.c  display_msg.c -o main
+  301  objdump -S -D main
+  302  ./main 
+  303  shutdown now -h
+
+DS-5 plugin: Streamline Data (Window -> Show view -> Streamline Data)
+target: 192.168.7.2:3456
+
+Na samiq target: 
+  571  cd gator
+  572  ./gatord -p 3456 &
+  573  ps -A
+  577  cd ../Desktop/
+
+=======Puskash streamline-a da zapisva (4erven buton start capture, vij dali Capture tab-a e vidim)
+  578  ./for_loops.bin 
+  579  cat for_loops.c 
+
+
+
