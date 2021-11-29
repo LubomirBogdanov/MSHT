@@ -1,0 +1,101 @@
+TMS320C2000 Hex Converter               v17.9.0.STS
+Tools Copyright (c) 1996-2017 Texas Instruments Incorporated
+
+Usage: C:\ti\ccsv7\tools\compiler\ti-cgt-c2000_17.9.0.STS\bin\hex2000 [-options] filename
+
+Use 'C:\ti\ccsv7\tools\compiler\ti-cgt-c2000_17.9.0.STS\bin\hex2000 -h <option>' for more information on a particular option.  Use
+'C:\ti\ccsv7\tools\compiler\ti-cgt-c2000_17.9.0.STS\bin\hex2000 -h <text>' to search options for information regarding <text>.
+
+Option arguments surrounded by [] declare they are optional.  Option arguments
+separated by commas specify that the option's argument must be chosen from
+those arguments listed.
+
+When shown, option arguments and defaults apply to the usage of both long and
+short option forms.
+
+General Options:
+  --byte,-byte                 Output as bytes rather than target addressing
+  --entrypoint,-e=addr         Specify entrypoint address or symbol name
+  --exclude,-exclude=section   Exclude section from hex conversion
+  --fill,-fill=val             Specify fill value
+  --help,-options,-h           Display help
+  --image,-image               Select image mode
+  --linkerfill,-linkerfill     Include linker fill sections in images
+  --map,-map=file              Specify map file name
+  --memwidth,-memwidth=width   Specify memory width
+  --order,-order=LS,MS         Specify data ordering (endianness)
+  --outfile,-o=file            Specify output file names
+  --quiet,-quiet,-q            Quiet Operation
+  --romwidth,-romwidth=width   Specify rom width
+  --swapbytes,--sb             Swap output bytes for 16byte memwidth
+  --zero,-zero,-z              Zero based addressing
+
+Diagnostics Options:
+  --buffer_diagnostics,-pdb    Line buffer diagnostic output
+  --diag_error=id              Treat diagnostic <id> as error
+  --diag_remark=id             Treat diagnostic <id> as remark
+  --diag_suppress=id           Suppress diagnostic <id>
+  --diag_warning=id            Treat diagnostic <id> as warning
+  --diag_wrap[=on,off]         Wrap diagnostic messages (argument optional,
+                                defaults to: on)
+  --display_error_number       Emit diagnostic identifier numbers
+  --emit_warnings_as_errors,-pdew
+                               Treat warnings as errors
+  --issue_remarks              Issue remarks
+  --no_warnings                Suppress warnings
+  --set_error_limit=count      Set error limit to <count>
+
+Boot Table Options:
+  --boot,-boot                 Select boot mode
+  --bootorg,-bootorg=addr      Specify origin address or symbol of boot table
+                                ROM
+  --divsel,-divsel=value       Specify the initial value for the DIVSEL
+                                register
+  --gpio16,-gpio16             Specify table source as the GP I/O port, 16-bit
+                                mode
+  --gpio8,-gpio8,-can8         Specify table source as the GP I/O port, 8-bit
+                                mode
+  --i2c8,-i2c8                 Specify I2C port as source of boot table loader
+  --i2cclkh,-i2cclkh=value     Specify the initial value for I2CCLKH register
+  --i2cclkl,-i2cclkl=value     Specify the initial value for the I2CCLKL
+                                register
+  --i2cpsc,-i2cpsc=value       Specify the initial value for I2CPSC register
+  --lospcp,-lospcp=value       Specify the initial value for the LOSPCP
+                                register
+  --pllcr,-pllcr=value         Specify the initial value for the PLLCR register
+  --sci8,-sci8                 Specify table source as the SCI-A port, 8-bit
+                                mode
+  --spi8,-spi8                 Specify table source as the SPI-A port, 8-bit
+                                mode
+  --spibrr,-spibrr=value       Specify the initial value for the SPIBRR
+                                register
+  --xintcnf2,-xintcnf2=value   Specify the initial value for the XINTCNF2
+                                register
+  --xintf16,-xintf16           Specify parallel XINTF stream, 16-bit mode
+  --xintf8,-xintf8             Specify parallel XINTF stream, 8-bit mode
+  --xtiming,-xtiming=value     Specify the initial value for the XTIMING
+                                register
+
+Output Format Options:
+  --ascii,-a                   Output ASCII hex format
+  --binary,-b                  Binary output format (for DSKs)
+  --intel,-i                   Output Intel hex format
+  --motorola,-m[=1,2,3]        Output Motorola S hex format
+  --tektronix,-x               Output Extended Tektronix hex format
+  --ti_tagged,-t               Output TI-Tagged hex format
+  --ti_txt                     Output TI-TXT hex format
+
+Load Image Options:
+  --host_image                 Output Host Image Object format
+  --host_image:endianness=big,little
+                               Select the endianness of the host image object
+                                file
+  --host_image:hidden_symbols  Determine the visibility of symbols copied in
+                                host images
+  --host_image:hide=string     Explicitly make a host image symbol hidden
+  --host_image:show=string     Explicitly make a host image symbol visible
+  --host_image:target=ARM,MSP430,C2000,C6000,ARP32,PRU
+                               Machine type of the host image object file
+  --load_image                 Output Load Image Object format
+  --section_name_prefix=string Prefix for load/host image object sections
+

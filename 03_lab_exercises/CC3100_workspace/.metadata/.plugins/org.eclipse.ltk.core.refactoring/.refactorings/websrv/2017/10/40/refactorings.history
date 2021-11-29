@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;websrv/html_axl.h&apos; to &apos;html_sensors.h&apos;" description="Rename resource &apos;html_axl.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="html_axl.h" name="html_sensors.h" stamp="1507378982834" updateReferences="true"/>
+</session>

@@ -1,0 +1,73 @@
+/*
+ * sensors.c
+ *
+ *  Created on: 6.10.2017 г.
+ *      Author: lbogdanov
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include "sensors.h"
+
+void init_sensors(void)
+{
+    //Избери функцията на извод P9.2 (A10) и P9.3 (A11) като вход на АЦП
+    P9SEL0 |= 0x0C;
+    P9SEL1 |= 0x0C;
+    ADC12CTL0 &= ~ADC12ENC;     //Забрани преобразуването, ENC = 0
+    ADC12CTL0 |= ADC12ON;       //Включи АЦП
+    ADC12CTL0 |= ADC12SHT1_15;  //Избери Sample-and-hold време = 512 такта на АЦП-то за
+                                //канали 8 - 23
+    ADC12CTL0 |= ADC12MSC;      //Автоматично ресетиране на SH таймера след всяко
+                                //преобразуване
+    ADC12CTL1 |= ADC12SSEL_2;   //Избери MCLK за тактов сигнал
+    ADC12CTL1 |= ADC12SHP;      //Използвай sampling таймера
+    ADC12CTL1 |= ADC12CONSEQ_1; //Избери режим "много канали, по едно измерване на всеки"
+    ADC12CTL1 |= ADC12PDIV_0;   //Раздели тактовия сигнал на 1
+    ADC12CTL1 |= ADC12DIV_1;    //Раздели тактовия сигнал на 2 (от втория делител)
+    ADC12CTL1 &= ~ADC12ISSH;    //Не инвертирай sample-and-hold сигнала
+    ADC12CTL1 |= ADC12SHS_0;    //Използвай ADC12SC бита като сигнал за начало на sample-
+                                //and-hold
+    ADC12CTL2 &= ~ADC12DF;      //Формат на резултата - прав код
+    ADC12CTL2 &= ~ADC12RES_3;   //Занули битовете за разредността
+    ADC12CTL2 |= ADC12RES_2;    //Избери 12-битово преобразуване, Userguide стр. 880
+//-------------------------MCTL конфигурация----------------------------------------------------------------------
+    ADC12CTL3 |= ADC12CSTARTADD_10; //Избери регистър ADC12MEM10 да е приемник на
+                                    //резултата от първото преобразуване
+    //Конфигурирай измерването на потенциометъра
+    ADC12MCTL10 &= ~ADC12DIF; //Избери single-ended преобразуване
+    ADC12MCTL10 |= ADC12VRSEL_0; //Използвай Vdd за горен праг, Vss - за долен.
+    ADC12MCTL10 |= ADC12INCH_10; //Избери A10 за входен канал
+    ADC12MCTL10 &= ~ADC12EOS; //Канал А10 не е крайният канал за преобразуване
+    //Конфигурирай измерването на NTC резистора (термистора)
+    while(REFCTL0 & REFGENBUSY); //Провери дали REFGENBUSY е 1, ако ДА - изчакай
+    REFCTL0 |=(REFVSEL_2  | REFON); //Задай 2.5 V | Включи вътрешния еталон
+    ADC12MCTL11 &= ~ADC12DIF; //Избери single-ended преобразуване
+    ADC12MCTL11 |= ADC12VRSEL_1; //Използвай Vref(буфериран) за горен праг, Vss - за долен.
+    ADC12MCTL11 |= ADC12INCH_11; //Избери A30 за входен канал
+    ADC12MCTL11 &= ~ADC12EOS; //Канал А30 не е крайният канал за преобразуване
+    //Конфигурирай измерването на вътрешния резисторен делител (А31)
+    ADC12CTL3 |= ADC12BATMAP; //Избери вътрешния източник за канал A31
+    ADC12MCTL31 &= ~ADC12DIF; //Избери single-ended преобразуване
+    ADC12MCTL31 |= ADC12VRSEL_1; //Използвай Vref(буфериран) за горен праг, Vss - за долен.
+    ADC12MCTL31 |= ADC12INCH_31; //Избери A31 за входен канал
+    ADC12MCTL31 |= ADC12EOS; //Канал А31 е крайният канал за преобразуване
+//----------------------------------------------------------------------------------------------------------------------------
+    ADC12CTL0 |= ADC12ENC; //Установи ENC в 1
+}
+
+
+void sensors_get_data(uint8_t *data_packet_buff)
+{
+    uint16_t pot, tempr;
+    char vdd_str[3];
+    float vdd;
+    uint8_t vdd_dec;
+    ADC12CTL0 |= ADC12SC; // Започни измерванe, Userguide ?стр. 877
+    while(ADC12CTL1 & ADC12BUSY){ }
+
+    pot =  ADC12MEM10;
+    tempr =  ADC12MEM11;
+    vdd =  ADC12MEM31;
+
+    sprintf(data_packet_buff, "   <P>POT: %04d TEMP: %04d VDD: %04d</P>\n", pot, tempr, vdd);
+}

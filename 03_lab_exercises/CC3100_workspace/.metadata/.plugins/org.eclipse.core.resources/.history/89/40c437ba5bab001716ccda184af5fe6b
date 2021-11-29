@@ -1,0 +1,27 @@
+/*
+ * html_axl.h
+ *
+ *  Created on: Nov 11, 2014
+ *      Author: Lubo
+ */
+
+#ifndef HTML_SENSORS_H_
+#define HTML_SENSORS_H_
+
+char *index_sens_html = "<!DOCTYPE html PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n"
+		"<HTML>\n"
+		"   <HEAD>\n"
+		"      <TITLE>\n"
+		"         MSP430FR6989\n"
+		"      </TITLE>\n"
+		"   </HEAD>\n"
+		"<BODY>\n"
+		"<meta http-equiv=\"refresh\" content=\"2\" />\n"
+		"   <H1>SENSORS</H1>\n";
+char *data_sens_html =
+		"   <P>POT: 0000 TEMP: 0000 VDD: 0000</P>\n"
+char *close_sens_html =
+        "</BODY>\n"
+		"</HTML>\n";
+
+#endif /* HTML_SENSORS_H_ */

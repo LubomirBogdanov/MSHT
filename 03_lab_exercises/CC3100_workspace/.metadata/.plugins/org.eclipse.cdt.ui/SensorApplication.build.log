@@ -1,0 +1,24 @@
+
+**** Build of configuration Debug for project SensorApplication ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../leds.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ti_compiler_v17_3/bin/cl430" -vmspx --data_model=restricted -Ooff --use_hw_mpy=F5 --include_path="C:/ti/ccsv7/ccs_base/msp430/include" --include_path="C:/Users/lbogdanov/Desktop/04_CC3100_workspace_websrv_finished/CC3100_workspace/SensorApplication/common" --include_path="C:/Users/lbogdanov/Desktop/04_CC3100_workspace_websrv_finished/CC3100_workspace/SensorApplication/simplelink/include" --include_path="C:/Users/lbogdanov/Desktop/04_CC3100_workspace_websrv_finished/CC3100_workspace/SensorApplication" --include_path="C:/ti/ti_compiler_v17_3/include" --advice:power="all" --advice:hw_config="all" --define=__MSP430FR6989__ --define=__CCS__ --define=_USE_CLI_ --define=_MPU_ENABLE -g --printf_support=full --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --preproc_with_compile --preproc_dependency="leds.d"  "../leds.c"
+"../leds.c", line 12: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+"../leds.c", line 12: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+'Finished building: ../leds.c'
+' '
+'Building target: SensorApplication.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ti_compiler_v17_3/bin/cl430" -vmspx --data_model=restricted -Ooff --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" --define=__MSP430FR6989__ --define=__CCS__ --define=_USE_CLI_ --define=_MPU_ENABLE -g --printf_support=full --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"SensorApplication.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv7/ccs_base/msp430/include" -i"C:/ti/ccsv7/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv7/ccs_base/msp430/lib/FR59xx" -i"C:/ti/ti_compiler_v17_3/lib" -i"C:/ti/ti_compiler_v17_3/include" --priority --reread_libs --define=_MPU_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="SensorApplication_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "SensorApplication.out" "./board.obj" "./cli_uart.obj" "./leds.obj" "./main.obj" "./sensors.obj" "./simple_link_func.obj" "./spi.obj" "./uart.obj" "./uartstdio.obj" "./common/jsmn.obj" "./simplelink/source/device.obj" "./simplelink/source/driver.obj" "./simplelink/source/flowcont.obj" "./simplelink/source/fs.obj" "./simplelink/source/netapp.obj" "./simplelink/source/netcfg.obj" "./simplelink/source/nonos.obj" "./simplelink/source/socket.obj" "./simplelink/source/spawn.obj" "./simplelink/source/wlan.obj" "../lnk_msp430fr6989.cmd"  -llibmpu_init.a -llibmath.a -llibc.a 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port C in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port D in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port E in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: SensorApplication.out'
+' '
+
+**** Build Finished ****

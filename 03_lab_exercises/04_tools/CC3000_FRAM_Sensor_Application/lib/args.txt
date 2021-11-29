@@ -1,0 +1,3 @@
+
+CC3000SensorAppGUI
+CC3000SensorAppGUI.jar,core.jar,RXTXcomm.jar,serial.jar
