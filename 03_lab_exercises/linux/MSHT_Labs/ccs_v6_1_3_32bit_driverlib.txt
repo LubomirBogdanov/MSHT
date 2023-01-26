@@ -1,0 +1,6 @@
+1. Copy-paste директорията MSHT/03_lab_exercises/02_driverlib/MSP430FR5xx_6xx в проекта на Code Composer Studio.
+2. Десен бутон върху проекта -> Properties -> Build -> MSP430 Compiler -> зелен плюс Add ... -> Workspace -> изберете името на проекта ви/MSP430FR5xx_6xx/inc -> OK -> OK 
+
+&& 
+
+Аналогично-> зелен плюс Add ... -> Workspace -> изберете името на проекта ви/MSP430FR5xx_6xx -> OK -> OK  
