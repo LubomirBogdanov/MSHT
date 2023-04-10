@@ -1,0 +1,11 @@
+Upon cloning the project from github, the executable files will have
+wrong permisions and an error message will be displayed:
+
+Could not display "tcp_socket_linux_64bit".
+There is no application installed for "executable" files.
+Do you want to search for an application to open this file?
+
+To fix this, open a terminal and issue the command:
+sudo chmod +x tcp_socket_linux_64bit
+
+to make the binary executable.
