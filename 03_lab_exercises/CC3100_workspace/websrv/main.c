@@ -7,7 +7,7 @@
 #include "html.h"
 #include "sensors.h"
 
-#define SSID_NAME       "MSHT_PPMK"          // Access point name to connect to.
+#define SSID_NAME       "LAB1362"          // Access point name to connect to.
 #define SEC_TYPE        SL_SEC_TYPE_WPA_WPA2    // Security type of the Access piont
 #define PASSKEY         "arm-cortex"           // Password in case of secure AP
 #define PASSKEY_LEN     pal_Strlen(PASSKEY)     // Password length in case of secure AP
