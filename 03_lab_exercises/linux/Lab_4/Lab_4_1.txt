@@ -5,35 +5,41 @@
  */
 
 // Timer A0 interrupt service routine
+// Това е програмата за обслужване на прекъсването от таймер A0
+// Това прекъсване настъпва всеки път, когато има съвпадение на стойността в регистъра TA0R
+// и регистъра TA0CCR0
 #pragma vector = TIMER0_A0_VECTOR
 __interrupt void Timer_A(void)
 {
-    TA0CTL &= ~TAIFG;
-    P8OUT ^= 0b00010000;
+    TA0CTL &= ~0b0000000001;                      // Нулирай флага за прекъсване
+    P8OUT ^= 0b00010000;                          // Обърни лог. ниво на извод P8.4
 }
 
 void main(void)
 {
-    WDTCTL = WDTPW | WDTHOLD;
-    PM5CTL0 &= ~LOCKLPM5;
+    WDTCTL = WDTPW | WDTHOLD;                     // Спри watchdog таймера
+    PM5CTL0 &= ~0b00000001;                       // Изключи високоимпедансното състояние на GPIO    
 
-    P8DIR |= 0b00010000;
+    P8DIR |= 0b00010000;                          // Задай извод P8.4 да бъде изход
 
-    // Тактов генератор DCO = 8MHz, MSP430FR6989 Userguide (стр. 104)
-    CSCTL0_H = 0b10100101;
-    CSCTL1 |= DCORSEL;                            // DCORSEL = 1
+    // Тактов генератор DCO = 8MHz, MSP430FR6989 Userguide (стр. 104-107)
+    CSCTL0_H = 0xA5;                              // Въвеждане на парола за отключване на CS регистрите
+    CSCTL1 |= 0b01000000;                         // DCORSEL = 1
     CSCTL1 &= ~0b00001110;                        // Занули DCOFSEL битовете
-    CSCTL1 |= DCOFSEL_3;                          // Задай DCOFSEL битовете = 011b = 3h
+    CSCTL1 |= 0b00000110;                         // Задай DCOFSEL битовете = 011b
     CSCTL2 = 0b00000000;                          // Занули всички битове от регистъра CSCTL2
-    CSCTL2 |= (SELA_1 | SELS_3 | SELM_3);         // ACLK = VLOCLK; SMCLK = DCO; MCLK = DCO
+    CSCTL2 |= 0b00100110011;                      // ACLK = VLOCLK; SMCLK = DCO; MCLK = DCO
     CSCTL3 = 0b00000000;                          // Занули всички битове от регистъра CSCTL3
-    CSCTL3 |= (DIVA_0 | DIVS_0 | DIVM_0);         // Всички делители на тактовите сигнали ÷ 1
+    CSCTL3 |= 0b00000000000;                      // Всички делители на тактовите сигнали ÷ 1. Този ред е даден за пълнота
+                                                  // Реално с предходния ред е извършена конфигурацията, тъй като трябва
+                                                  // всички битове да са 0, за бъде коефициентът на делене 1 на делителите
 
-    TA0CTL = TASSEL_2 | ID_3 | ???;               // SMCLK | делител=8 | режим UP/DOWN, MSP430FR6989 Userguide (стр. 641)
-    TA0CCTL0 |= ???;                              // Прекъсване при съвпадение с Capture/Compare рег., MSP430FR6989 Userguide (стр. 643)
-    TA0CCR0 = ???;                                // Compare стойност за сравнение с рег. на таймера
+    TA0CTL = 0b??????????;                        // SMCLK | делител=8 | режим UP/DOWN, MSP430FR6989 Userguide (стр. 658)
+    TA0CCTL0 |= 0b10000;                          // Прекъсване при съвпадение с Capture/Compare рег., MSP430FR6989 Userguide (стр. 660-661)
+    TA0CCR0 = ?????;                              // Compare стойност за сравнение с рег. на таймера, MSP430FR6989 Userguide (стр. 662) 
+                                                  // Запишете в десетичен код
 
-    __enable_interrupt();
+    __enable_interrupt();                         // Разреши прекъсванията
 
     while (1)
     {
