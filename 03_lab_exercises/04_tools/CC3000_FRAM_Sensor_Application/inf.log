@@ -643,3 +643,17 @@
 15:2:6 - lib\core.jar;lib\serial.jar;lib\RXTXcomm.jar;lib\CC3000SensorAppGUI.jar
 15:2:6 - E:\Data\TU-Sofia\Teaching\05-Msht\Bachelor\Lab\Materiali_Za_Kursa_2018\MSHT_LAB\04_tools\CC3000_FRAM_Sensor_Application\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
 15:2:6 - E:\Data\TU-Sofia\Teaching\05-Msht\Bachelor\Lab\Materiali_Za_Kursa_2018\MSHT_LAB\04_tools\CC3000_FRAM_Sensor_Application\jre
+=== Debug Log === 
+11:17:10 - x86
+11:17:10 - Sun Microsystems Inc.
+11:17:10 - 1.6.0_15
+11:17:10 - lib\core.jar;lib\serial.jar;lib\RXTXcomm.jar;lib\CC3000SensorAppGUI.jar
+11:17:10 - C:\git\MSHT\03_lab_exercises\04_tools\CC3000_FRAM_Sensor_Application\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+11:17:10 - C:\git\MSHT\03_lab_exercises\04_tools\CC3000_FRAM_Sensor_Application\jre
+=== Debug Log === 
+11:24:59 - x86
+11:24:59 - Sun Microsystems Inc.
+11:24:59 - 1.6.0_15
+11:24:59 - lib\core.jar;lib\serial.jar;lib\RXTXcomm.jar;lib\CC3000SensorAppGUI.jar
+11:24:59 - C:\git\MSHT\03_lab_exercises\04_tools\CC3000_FRAM_Sensor_Application\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+11:24:59 - C:\git\MSHT\03_lab_exercises\04_tools\CC3000_FRAM_Sensor_Application\jre
