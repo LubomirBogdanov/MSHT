@@ -173,7 +173,7 @@ void SimpleLinkWlanEventHandler(SlWlanEvent_t *pWlanEvent)
          * pEventData = &pWlanEvent->EventData.STAandP2PModeWlanConnected;
          *
          */
-        strcpy(g_SSID, (const char *)pWlanEvent->EventData.STAandP2PModeWlanConnected.ssid_name);
+        strcpy_s(g_SSID, sizeof(g_SSID), (const char *)pWlanEvent->EventData.STAandP2PModeWlanConnected.ssid_name);
         UARTprintf("WLAN connection established!\n\r");
         break;
 
